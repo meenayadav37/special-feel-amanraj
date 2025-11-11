@@ -1,12 +1,30 @@
 /* General Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  font-family:'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffb6c1, #ffd700);
-  background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
   overflow: hidden;
   color: #fff;
+}
+
+/* Gradient background for all layers */
+.layer {
+  background: linear-gradient(135deg, #ffb6c1, #ffd700);
+}
+
+/* Layer 6 (Final) special bg */
+.layer.final-layer {
+  background: linear-gradient(
+      135deg,
+      rgba(255, 182, 193, 0.6),
+      rgba(255, 215, 0, 0.6)
+    ),
+    url("assets/bg-photo.jpg") center/cover no-repeat;
+  backdrop-filter: blur(6px);
 }
 
 /* Main App */
@@ -14,112 +32,313 @@ body {
   position: relative;
   height: 100vh;
   width: 100vw;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 /* Layers */
 .layer {
-  position:absolute;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  opacity:0;
-  transform:scale(1.05);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.05);
   transition: opacity 1.5s ease, transform 1.5s ease;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
 }
-
 .layer.active {
-  opacity:1;
-  transform:scale(1);
-  z-index:2;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
 }
 
 /* Cards */
 .card {
-  background: rgba(255,255,255,0.1);
-  border: 2px solid rgba(255,192,203,0.6);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 192, 203, 0.6);
   border-radius: 30px;
-  padding:2rem;
-  max-width:90%;
-  width:600px;
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 30px rgba(255,215,0,0.4);
+  padding: 2rem;
+  max-width: 90%;
+  width: 600px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
 }
 
 /* Titles & Lead */
-.title { font-size:2rem; color:#fff; text-shadow:0 0 10px #ffd700; margin-bottom:1rem; }
-.lead { font-size:1.2rem; color:#fffaf0; margin-bottom:1.5rem; line-height:1.6; }
+.title {
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0 0 10px #ffd700;
+  margin-bottom: 1rem;
+}
+.lead {
+  font-size: 1.2rem;
+  color: #fffaf0;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
 
 /* Buttons */
 .btn {
-  background: rgba(255,182,193,0.7);
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  padding:0.7rem 1.5rem;
-  font-size:1rem;
-  cursor:pointer;
-  margin:0.5rem;
+  background: rgba(255, 182, 193, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0.5rem;
   transition: all 0.3s ease;
 }
 .btn:hover {
-  background: rgba(255,215,0,0.8);
-  box-shadow:0 0 15px rgba(255,215,0,0.7);
-  transform:scale(1.05);
+  background: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+  transform: scale(1.05);
 }
-.btn.primary { background: linear-gradient(90deg,#ff69b4,#ffd700); }
+.btn.primary {
+  background: linear-gradient(90deg, #ff69b4, #ffd700);
+}
 
 /* GIFs */
-.gif-wrap { margin-top:1rem; }
-.scene-gif { width:200px; height:auto; border-radius:20px; box-shadow:0 0 20px rgba(255,192,203,0.6); }
+.gif-wrap {
+  margin-top: 1rem;
+}
+.scene-gif {
+  width: 200px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+}
 
 /* Photo Rect */
-.photo-rect-wrap { display:flex; justify-content:center; margin:1rem 0; }
-.photo-rect { border:4px solid #ffd700; border-radius:20px; overflow:hidden; box-shadow:0 0 25px rgba(255,192,203,0.8); width:220px; height:280px; }
-.photo-rect img { width:100%; height:100%; object-fit:cover; }
+.photo-rect-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.photo-rect {
+  border: 4px solid #ffd700;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255, 192, 203, 0.8);
+  width: 220px;
+  height: 280px;
+}
+.photo-rect img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* Final Message */
 .final-msg {
-  font-size:1.3rem;
-  line-height:1.8;
-  margin-bottom:2rem;
-  text-align:center;
-  background: linear-gradient(90deg, #ff69b4, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  text-align: center;
 }
-.gold { color:#ffd700; }
 
 /* Cinematic */
-.cinematic-line { font-size:1.4rem; line-height:1.6; color:#fff; text-shadow:0 0 12px #ffb6c1; margin-bottom:1rem; }
-.hidden { display:none; }
+.cinematic-line {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #fff;
+  text-shadow: 0 0 12px #ffb6c1;
+  margin-bottom: 1rem;
+}
+.hidden {
+  display: none;
+}
 
 /* Animations */
-@keyframes fadeIn { 0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);} }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Heart / Trail Layers */
-#heart-layer, #trail-layer { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+#heart-layer,
+#trail-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* Layer-6 Background */
-#layer-6 {
-  background: linear-gradient(135deg, rgba(255,182,193,0.5), rgba(255,215,0,0.5)),
-              url('assets/bg-photo.jpg') center/cover no-repeat;
-  backdrop-filter: blur(6px);
+/* Confetti canvas */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.feelings-btn,
+#loveBtn,
+#againBtn {
+  background: linear-gradient(90deg, #ff69b4, #ffd700);
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 22px;
+  margin: 15px 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feelings-btn:hover,
+#loveBtn:hover,
+#againBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+/* Layer 7 specific */
+#layer-7 {
+  overflow-y: auto; /* allow vertical scroll */
+  padding: 2rem;
+}
+
+/* Style the buttons in Layer 7 */
+#layer-7 button {
+  background: linear-gradient(90deg, #ff69b4, #ffd700);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 22px;
+  margin: 15px 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#layer-7 button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+/* Optional: make the text readable with padding */
+#feelingsText {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Layer 7 adjustments */
+#layer-7 {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: flex-start; /* vertical alignment at top */
+  padding: 60px 20px 60px 20px; /* top and bottom spacing */
+  overflow-y: auto; /* allow scroll for long content */
+}
+#layer-7 .content {
+  margin: 0 auto; /* horizontal centering */
+  max-width: 600px;
+  padding: 25px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;   /* limit to viewport height */
+  overflow-y: auto;   /* enable vertical scroll */
+  padding: 50px 20px; /* optional padding for content spacing */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* align content to top */
+  text-align: center;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;   /* limit to viewport height */
+  overflow-y: auto;   /* enable vertical scroll */
+  padding: 50px 20px; /* optional padding for content spacing */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* align content to top */
+  text-align: center;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;   /* limit to viewport height */
+  overflow-y: auto;   /* enable vertical scroll */
+  padding: 50px 20px; /* optional padding for content spacing */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* align content to top */
+  text-align: center;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.layer .card {
+  margin: 40px 0; /* top & bottom margin inside the scrollable layer */
+  padding: 2rem;
+}
+
+#layer-7 .content {
+  margin: 60px 0;
+  padding: 30px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(255,105,180,0.4);
 }
 
 /* Responsive */
-@media(max-width:600px) {
-  .title{font-size:1.5rem;}
-  .lead{font-size:1rem;}
-  .scene-gif{width:150px;}
-  .photo-rect{width:180px;height:240px;}
-  .final-msg{font-size:1.1rem;}
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+  .scene-gif {
+    width: 150px;
+  }
+  .photo-rect {
+    width: 180px;
+    height: 240px;
+  }
+  .final-msg {
+    font-size: 1.1rem;
+  }
 }
