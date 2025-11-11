@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Amanraj Gill — My Forever 💞</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="bg-photo" aria-hidden="true"></div>
+  <div id="trail-layer" aria-hidden="true"></div>
+  <div id="heart-layer" aria-hidden="true"></div>
+
+  <main class="app" id="app">
+    <!-- Layer 1 -->
+    <section class="layer active" id="layer-1" data-layer="1">
+      <div class="card">
+        <h1 class="title">Since 2020... 💫</h1>
+        <p class="lead">I’ve been your biggest fan, my forever crush — Amanraj Gill.<br>
+        My dream came true when I attended your concert on <b>7 March 2025</b> at SSNC college fest 💞</p>
+        <div class="gif-wrap">
+          <img src="assets/gif1.gif" alt="hearts floating gif" class="scene-gif" />
+        </div>
+        <div class="controls">
+          <button class="btn primary" id="startBtn" data-next="layer-2">Start 💖</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layer 2 -->
+    <section class="layer" id="layer-2" data-layer="2">
+      <div class="card">
+        <h1 class="title">12 May 💫</h1>
+        <p class="lead">The day I met you personally felt like a dream — I can’t explain my happiness 💕</p>
+        <div class="gif-wrap">
+          <img src="assets/gif2.gif" alt="meeting gif" class="scene-gif" />
+        </div>
+        <div class="photo-rect-wrap">
+          <div class="photo-rect">
+            <img src="assets/ourphoto.jpg" alt="our photo" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="controls">
+          <button class="btn" data-prev="layer-1">Back</button>
+          <button class="btn primary" data-next="layer-3">Next 💞</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layer 3 -->
+    <section class="layer" id="layer-3" data-layer="3">
+      <div class="card">
+        <h1 class="title">17 July 🌷</h1>
+        <p class="lead">When I hugged you, I forgot the whole world — I felt like I’d won it 💫</p>
+        <div class="gif-wrap">
+          <img src="assets/gif3.gif" alt="hug gif" class="scene-gif" />
+        </div>
+        <div class="controls">
+          <button class="btn" data-prev="layer-2">Back</button>
+          <button class="btn primary" data-next="layer-4">Next ✨</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layer 4 -->
+    <section class="layer" id="layer-4" data-layer="4">
+      <div class="card">
+        <h1 class="title">7 November 🌹</h1>
+        <p class="lead">You became mine — not just for a moment, but forever.<br>
+        I promise I am only yours, apart from all the world, whether you’re mine or not 💖</p>
+        <div class="gif-wrap">
+          <img src="assets/gif4.gif" alt="promise gif" class="scene-gif" />
+        </div>
+        <div class="controls">
+          <button class="btn" data-prev="layer-3">Back</button>
+          <button class="btn primary" data-next="layer-5">Next 🌟</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layer 5 -->
+    <section class="layer" id="layer-5" data-layer="5">
+      <div class="card">
+        <h1 class="title">You’re my melody, my calm, my spark — Amanraj Jii 💖</h1>
+        <div class="gif-wrap">
+          <img src="assets/gif5.gif" alt="cute gif 5" class="scene-gif" />
+        </div>
+        <div class="controls">
+          <button class="btn" data-prev="layer-4">Back</button>
+          <button class="btn primary" data-next="layer-6" id="revealBtn">Reveal Surprise ✨</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layer 6 (Final Cinematic) -->
+    <section class="layer" id="layer-6" data-layer="6">
+      <div class="card reveal">
+        <div class="final-text">
+          <p class="cinematic-line" id="cinemaLine"></p>
+          <p class="final-msg hidden" id="finalMsg"></p>
+        </div>
+        <div class="gif-wrap">
+          <img src="assets/gif6.gif" alt="celebration gif" class="scene-gif" />
+        </div>
+        <div class="controls">
+          <button class="btn" data-prev="layer-5">Back</button>
+          <button class="btn primary" id="againBtn">See Again 💖</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <audio id="bg-audio" preload="auto" loop>
+    <source src="assets/mera_hua.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
