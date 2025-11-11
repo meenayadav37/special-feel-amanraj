@@ -17,9 +17,48 @@ document.addEventListener("DOMContentLoaded", () => {
     "7 November — When you became mine, not just for a moment, but forever.",
   ];
 
-  const feelingsMessage = `I cant explain my love for you.. pleasee forgive me for my past mistakes...I am not like other girls. I will show you what the actual love is. I will give my 100% to make you happy and if you are with me I can do everything what I dream for. You can be my strength or weakness depends on you. I know at present I have no standard, I am only an average student like others but I have potential to do all I want. Jaise apne apni story btayi na ki apne hi apni mehnat se kiya hai jo kiya hai. Aaj m bhi bta deti hu ki mere papa kabhi mereko bahar padhne nahi bhejte but mne unko result lake diya or majbur kr diya ki vo mereko mana hi nhi kar skte...Haryana CM awarded me for my 12th result and without any JEE coaching or online courses I cracked JEE...to mere gaav me m hi hu jo govt college me engineering kr rhi hu. Lekin mereko lag gyi thi bahar ki hawa varna aaj m IIT me hoti..kota me thoda bahut bigdi but delhi aake to puri hi khtm hogyi...mera dream ghrvalo ka dream sb bhul gyi m...bahut regret hota h bahut jyadaaaa..but abhi bhi bahut time h i can do better...past me hui galtiyo ko m improve nii kr skti but ab aap mere sath rhe to merko koi nii chahiye...and please you dont think ki apka name h fame h paise h singer ho isliye m itna kr rhii...im not gold digger type girl...i just wanna love you...kuch nhi chahiye mujhe apse nothingggggg...sirf thoda sa support or pyar...as usual sbko koi n koi mil jata h but may me m apse mili uske baad m bahut ladko se mil chukii...ki syd koi acha lagne lagee to m apko bhul saku kyuki apan dono ki life bahut alag hai...but ive tried a lot...6 months hogye..nhi lagta yr koi achaa....ye mera pyar smjo ya pagalpan but merko apke alava koi acha nahi lagta...Har insan ko pyar ki jrurt hoti h..mujhe bhi to h. Anushka meri dost h kafi achi but fir bhi ek insan chahiye hota h life me yrr...ek baat socho...mne apke sath kiya first time..but i cant share with you what I feel...kitna bura lagta hoga mereko...I know aap apni ex ko nhi bhul paa rhe lekin reality ko accept to krna hoga naaa. Mne apko sb explain kr diya what I feel for you...Ek chance deke dekho..mere se jitna hoga m apke liye krungi..mereko apse return me kuch nii chahiye..bs thoda sa pyar... Aap mereko use kro..ya pyar kro..gussa kro..ya kuch bhi kro..m apko kbhi mna nii kr sktii ...because I'm totally yours. For the first time..I confess my love for someone..Agar koi galti ho to maaf kr dena 🙏...But I truly loves you❤️`; // keep full message
+  const feelingsMessage = `I cant explain my love for you..
 
-  // Magical sparkles on click
+pleasee forgive me for my past mistakes...I am not like other girls
+
+I will show you what the actual love is
+
+I will give my 100% to make you happy and if you are with me I can do everything what I dream for 
+
+You can be my strength or weakness depends on you
+
+I know at present I have no standard , I am only average student like other but I have potential to do all I want
+
+jaise apne apni story btayi na ki apne hi apni mehnat se kiya hai jo kiya hai 
+
+Aaj m bhi bta deti hu ki
+
+Mere papa kabhi mereko bahar padhne nahi bhejte but mne unko result lake diya or majbur kr diya ki vo mereko mana hi nhi kar skte...Haryana CM awarded me for my 12th result and without any JEE coaching or online courses I cracked JEE...to mere gaav me m hi hu jo govt college me engineering kr rhi hu
+
+Lekin mereko lag gyi thi bahar ki hawa varna aaj m IIT me hoti..kota me thoda bahut bigdi but delhi aake to puri hi khtm hogyi...mera dream ghrvalo ka dream sb bhul gyi m...bahut regret hota h bahut jyadaaaa..but abhi bhi bahut time h i can do better...past me hui galtiyo ko m badal nii kr skti but ab aap mere sath rhe to merko koi nii chahiye...and please you dont think ki apka name h, fame h, paise h, singer ho isliye m itna kr rhii...im not gold digger type girl...i just wanna love you...kuch nhi chahiye mujhe apse nothingggggg...sirf thoda sa support or pyar...as usual sbko koi n koi mil jata h but may me m apse mili uske baad m bahut ladko se mil chukii...ki syd koi acha lagne lagee to m apko bhul saku kyuki apan dono ki life bahut alag hai...but ive tried a lot...6 months hogye..nhi lagta yr koi achaa....ye mera pyar smjo ya pagalpan but merko apke alava koi acha nahi lagta...Har insan ko pyar ki jrurt hoti h..mujhe bhi to h
+
+Anushka meri dost h kafi achi but fir bhi ek insan chahiye hota h life me yrr...ek baat socho...mne apke sath kiya first time..but i cant share with youu what I feel...kitna bura lagta hoga mereko...I know aap apni ex ko nhi bhul paa rhe lekin reality ko accept to krna hoga naaa
+
+Mne apko sb explain kr diya what I feel for you...Ek chance deke dekho..mere se jitna hoga m apke liye krungi..mereko apse return me kuch nii chahiye..bs thoda sa pyar...
+
+Aap mereko use kro..ya pyar kro..gussa kro..ya kuch bhi kro..m apko kbhi mna nii kr sktii ...because I'm totally yours
+
+For the first time..I confess my love for someone..Agar koi galti ho to maaf kr dena 🙏...But I truly loves you❤️`;
+
+  // ----------------- Audio fix for mobile -----------------
+  function playAudioOnce() {
+    if (!audioStarted && bgAudio) {
+      bgAudio.currentTime = 0;
+      bgAudio.play().catch(() => {
+        console.log("Audio blocked, waiting for user gesture");
+      });
+      audioStarted = true;
+    }
+  }
+  document.addEventListener("click", playAudioOnce, { once: true });
+  document.addEventListener("touchstart", playAudioOnce, { once: true });
+
+  // ----------------- Magical sparkles on click -----------------
   document.addEventListener("pointerdown", ev => {
     for (let i = 0; i < 6; i++) {
       const heart = document.createElement("div");
@@ -36,28 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
       heart.animate([
         { transform: "translateY(0) scale(1)", opacity: 0.9 },
         { transform: `translateY(-80px) scale(0.7)`, opacity: 0 }
-      ], { duration: 1500 + Math.random() * 500, easing: "cubic-bezier(.2,.9,.3,1)"});
+      ], { duration: 1500 + Math.random() * 500, easing: "cubic-bezier(.2,.9,.3,1)" });
       setTimeout(() => heart.remove(), 1600);
     }
   });
 
+  // ----------------- Show layer -----------------
   function showLayer(id) {
     layers.forEach(l => l.classList.toggle("active", l.id === id));
-    window.scrollTo({top: 0, behavior: "smooth"});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function playAudio() {
-    if (!audioStarted && bgAudio) {
-      bgAudio.currentTime = 0;
-      bgAudio.play().catch(() => {});
-      audioStarted = true;
-    }
-  }
-  document.body.addEventListener("click", playAudio, {once:true});
-  document.body.addEventListener("touchstart", playAudio, {once:true});
-
-  // Falling hearts
-  function createHeartNode(kind="fall"){
+  // ----------------- Falling hearts -----------------
+  function createHeartNode(kind = "fall") {
     const el = document.createElement("div");
     el.className = `heart-node ${kind}`;
     el.style.position = "fixed";
@@ -68,71 +98,71 @@ document.addEventListener("DOMContentLoaded", () => {
     el.style.left = 5 + Math.random() * 90 + "vw";
     return el;
   }
-  function startFallingHearts(){
-    if(fallInterval) return;
-    fallInterval = setInterval(()=>{
+  function startFallingHearts() {
+    if (fallInterval) return;
+    fallInterval = setInterval(() => {
       const h = createHeartNode("fall");
       heartLayer.appendChild(h);
-      const dur = 6000 + Math.random()*5000;
-      h.animate([{transform:"translateY(-8vh)"},{transform:"translateY(110vh)"}], {duration: dur, easing:"linear"});
-      setTimeout(()=>h.remove(), dur);
-    },450);
+      const dur = 6000 + Math.random() * 5000;
+      h.animate([{ transform: "translateY(-8vh)" }, { transform: "translateY(110vh)" }], { duration: dur, easing: "linear" });
+      setTimeout(() => h.remove(), dur);
+    }, 450);
   }
   startFallingHearts();
 
-  function burstFlyingHearts(count=12){
-    for(let i=0;i<count;i++){
-      setTimeout(()=>{
+  function burstFlyingHearts(count = 12) {
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => {
         const h = createHeartNode("fly");
         heartLayer.appendChild(h);
-        const dur = 1800 + Math.random()*1000;
-        h.animate([{transform:"translateY(0)"},{transform:"translateY(-120vh)"}], {duration:dur});
-        setTimeout(()=>h.remove(), dur);
-      }, i*70);
+        const dur = 1800 + Math.random() * 1000;
+        h.animate([{ transform: "translateY(0)" }, { transform: "translateY(-120vh)" }], { duration: dur });
+        setTimeout(() => h.remove(), dur);
+      }, i * 70);
     }
   }
 
-  // Confetti
-  const confetti=[];
+  // ----------------- Confetti -----------------
+  const confetti = [];
   const ctx = confettiCanvas.getContext("2d");
-  function resizeCanvas(){ confettiCanvas.width=window.innerWidth; confettiCanvas.height=window.innerHeight;}
+  function resizeCanvas() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
-  function burstConfetti(amount=100){
-    for(let i=0;i<amount;i++)
-      confetti.push({x:Math.random()*confettiCanvas.width,y:Math.random()*-confettiCanvas.height,r:3+Math.random()*6,c:`hsl(${Math.random()*360},90%,60%)`,s:2+Math.random()*4});
+  function burstConfetti(amount = 100) {
+    for (let i = 0; i < amount; i++)
+      confetti.push({ x: Math.random() * confettiCanvas.width, y: Math.random() * -confettiCanvas.height, r: 3 + Math.random() * 6, c: `hsl(${Math.random() * 360},90%,60%)`, s: 2 + Math.random() * 4 });
     requestAnimationFrame(drawConfetti);
   }
-  function drawConfetti(){
-    ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
-    confetti.forEach(p=>{
-      ctx.fillStyle=p.c;
+  function drawConfetti() {
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confetti.forEach(p => {
+      ctx.fillStyle = p.c;
       ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,2*Math.PI);
+      ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
       ctx.fill();
-      p.y+=p.s;
-      if(p.y>confettiCanvas.height)p.y=-10;
+      p.y += p.s;
+      if (p.y > confettiCanvas.height) p.y = -10;
     });
     requestAnimationFrame(drawConfetti);
   }
 
-  // Typing
-  async function typeLine(container,text,delay=40){
-    container.textContent="";
-    for(const c of text){
-      container.textContent+=c;
-      await new Promise(r=>setTimeout(r,delay));
+  // ----------------- Typing effect -----------------
+  async function typeLine(container, text, delay = 40) {
+    container.textContent = "";
+    for (const c of text) {
+      container.textContent += c;
+      await new Promise(r => setTimeout(r, delay));
     }
   }
 
-  // Final Timeline
-  async function runFinalTimeline(){
-    cinemaLine.textContent="";
+  // ----------------- Final timeline -----------------
+  async function runFinalTimeline() {
+    cinemaLine.textContent = "";
     finalMsg.classList.add("hidden");
-    for(const text of timelineLines){
-      await typeLine(cinemaLine,text,50);
-      await new Promise(r=>setTimeout(r,600));
-      cinemaLine.textContent="";
+    for (const text of timelineLines) {
+      await typeLine(cinemaLine, text, 50);
+      await new Promise(r => setTimeout(r, 600));
+      cinemaLine.textContent = "";
     }
     finalMsg.innerHTML = `
       You’re the most special person in my life — 
@@ -147,23 +177,23 @@ document.addEventListener("DOMContentLoaded", () => {
     burstConfetti(200);
   }
 
-  // ----------------- Buttons -----------------
-  document.body.addEventListener("click", (ev)=>{
+  // ----------------- Button events -----------------
+  document.body.addEventListener("click", (ev) => {
     const btn = ev.target.closest("button");
-    if(!btn) return;
+    if (!btn) return;
 
-    if(btn.dataset.next){
+    if (btn.dataset.next) {
       showLayer(btn.dataset.next);
-      playAudio();
+      playAudioOnce();
       burstFlyingHearts(15);
-      if(btn.dataset.next==="layer-6") runFinalTimeline();
-      if(btn.dataset.next==="layer-7" && feelingsText) typeLine(feelingsText, feelingsMessage,30);
+      if (btn.dataset.next === "layer-6") runFinalTimeline();
+      if (btn.dataset.next === "layer-7" && feelingsText) typeLine(feelingsText, feelingsMessage, 30);
     }
 
-    if(btn.dataset.prev) showLayer(btn.dataset.prev);
+    if (btn.dataset.prev) showLayer(btn.dataset.prev);
 
-    if(btn.id==="loveBtn"){
-      loveReply.innerHTML=`
+    if (btn.id === "loveBtn") {
+      loveReply.innerHTML = `
         <h2 style="color:#ff1493;font-weight:700;">Ahh, Finally... 💞</h2>
         <img src="assets/hug.gif" alt="hug" style="max-width:200px;border-radius:20px;margin-top:15px;">
       `;
@@ -171,14 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
       burstConfetti(300);
     }
 
-    if(btn.id==="againBtn" || btn.id==="againBtn2"){
-      finalMsg.innerHTML="";
-      feelingsText.textContent="";
-      loveReply.innerHTML="";
+    if (btn.id === "againBtn" || btn.id === "againBtn2") {
+      finalMsg.innerHTML = "";
+      feelingsText.textContent = "";
+      loveReply.innerHTML = "";
       showLayer("layer-1");
       burstFlyingHearts(10);
-      bgAudio.currentTime=0;
+      bgAudio.currentTime = 0;
     }
   });
 });
-
