@@ -48,22 +48,22 @@ Aap mereko use kro..ya pyar kro..gussa kro..ya kuch bhi kro..m apko kbhi mna nii
 For the first time..I confess my love for someone..Agar koi galti ho to maaf kr dena 🙏...But I truly loves you❤️`;
 
   // ----------------- Audio fix for mobile -----------------
-  function playAudioOnce() {
+  async function playAudioOnce() {
     if (!audioStarted && bgAudio) {
-      bgAudio.currentTime = 0;
-      bgAudio.play().catch(() => {
-        console.log("Audio blocked, waiting for user gesture");
-      });
-      audioStarted = true;
+      try {
+        bgAudio.currentTime = 0;
+        await bgAudio.play(); // <-- important for mobile
+        audioStarted = true;
+        console.log("Audio started!");
+      } catch (err) {
+        console.log("Audio blocked by mobile browser:", err);
+      }
     }
   }
-  playMusicBtn.addEventListener("click", () => {
-    playAudioOnce(); // calls the existing audio play function
+  playMusicBtn.addEventListener("click", async () => {
+    await playAudioOnce(); // plays the song
     playMusicBtn.style.display = "none"; // hide button after click
   });
-
-  document.addEventListener("click", playAudioOnce, { once: true });
-  document.addEventListener("touchstart", playAudioOnce, { once: true });
 
   // ----------------- Magical sparkles on click -----------------
   document.addEventListener("pointerdown", (ev) => {
