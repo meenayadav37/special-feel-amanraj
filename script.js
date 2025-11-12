@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalMsg = document.getElementById("finalMsg");
   const feelingsText = document.getElementById("feelingsText");
   const loveReply = document.getElementById("loveReply");
+  const playMusicBtn = document.getElementById("playMusicBtn");
 
-  let audioStarted = false, fallInterval = null;
+  let audioStarted = false;
+  let fallInterval = null;
 
   const timelineLines = [
     "12 May — The day I first saw you. Something in me changed.",
@@ -55,11 +57,16 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
       audioStarted = true;
     }
   }
+  playMusicBtn.addEventListener("click", () => {
+    playAudioOnce(); // calls the existing audio play function
+    playMusicBtn.style.display = "none"; // hide button after click
+  });
+
   document.addEventListener("click", playAudioOnce, { once: true });
   document.addEventListener("touchstart", playAudioOnce, { once: true });
 
   // ----------------- Magical sparkles on click -----------------
-  document.addEventListener("pointerdown", ev => {
+  document.addEventListener("pointerdown", (ev) => {
     for (let i = 0; i < 6; i++) {
       const heart = document.createElement("div");
       heart.className = "trail-dot";
@@ -72,17 +79,23 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
       heart.style.opacity = "0.9";
       heart.textContent = Math.random() > 0.5 ? "💖" : "💞";
       document.body.appendChild(heart);
-      heart.animate([
-        { transform: "translateY(0) scale(1)", opacity: 0.9 },
-        { transform: `translateY(-80px) scale(0.7)`, opacity: 0 }
-      ], { duration: 1500 + Math.random() * 500, easing: "cubic-bezier(.2,.9,.3,1)" });
+      heart.animate(
+        [
+          { transform: "translateY(0) scale(1)", opacity: 0.9 },
+          { transform: `translateY(-80px) scale(0.7)`, opacity: 0 },
+        ],
+        {
+          duration: 1500 + Math.random() * 500,
+          easing: "cubic-bezier(.2,.9,.3,1)",
+        }
+      );
       setTimeout(() => heart.remove(), 1600);
     }
   });
 
   // ----------------- Show layer -----------------
   function showLayer(id) {
-    layers.forEach(l => l.classList.toggle("active", l.id === id));
+    layers.forEach((l) => l.classList.toggle("active", l.id === id));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -104,7 +117,10 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
       const h = createHeartNode("fall");
       heartLayer.appendChild(h);
       const dur = 6000 + Math.random() * 5000;
-      h.animate([{ transform: "translateY(-8vh)" }, { transform: "translateY(110vh)" }], { duration: dur, easing: "linear" });
+      h.animate(
+        [{ transform: "translateY(-8vh)" }, { transform: "translateY(110vh)" }],
+        { duration: dur, easing: "linear" }
+      );
       setTimeout(() => h.remove(), dur);
     }, 450);
   }
@@ -116,7 +132,10 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
         const h = createHeartNode("fly");
         heartLayer.appendChild(h);
         const dur = 1800 + Math.random() * 1000;
-        h.animate([{ transform: "translateY(0)" }, { transform: "translateY(-120vh)" }], { duration: dur });
+        h.animate(
+          [{ transform: "translateY(0)" }, { transform: "translateY(-120vh)" }],
+          { duration: dur }
+        );
         setTimeout(() => h.remove(), dur);
       }, i * 70);
     }
@@ -125,17 +144,26 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
   // ----------------- Confetti -----------------
   const confetti = [];
   const ctx = confettiCanvas.getContext("2d");
-  function resizeCanvas() { confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
+  function resizeCanvas() {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+  }
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
   function burstConfetti(amount = 100) {
     for (let i = 0; i < amount; i++)
-      confetti.push({ x: Math.random() * confettiCanvas.width, y: Math.random() * -confettiCanvas.height, r: 3 + Math.random() * 6, c: `hsl(${Math.random() * 360},90%,60%)`, s: 2 + Math.random() * 4 });
+      confetti.push({
+        x: Math.random() * confettiCanvas.width,
+        y: Math.random() * -confettiCanvas.height,
+        r: 3 + Math.random() * 6,
+        c: `hsl(${Math.random() * 360},90%,60%)`,
+        s: 2 + Math.random() * 4,
+      });
     requestAnimationFrame(drawConfetti);
   }
   function drawConfetti() {
     ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-    confetti.forEach(p => {
+    confetti.forEach((p) => {
       ctx.fillStyle = p.c;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
@@ -151,7 +179,7 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
     container.textContent = "";
     for (const c of text) {
       container.textContent += c;
-      await new Promise(r => setTimeout(r, delay));
+      await new Promise((r) => setTimeout(r, delay));
     }
   }
 
@@ -161,7 +189,7 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
     finalMsg.classList.add("hidden");
     for (const text of timelineLines) {
       await typeLine(cinemaLine, text, 50);
-      await new Promise(r => setTimeout(r, 600));
+      await new Promise((r) => setTimeout(r, 600));
       cinemaLine.textContent = "";
     }
     finalMsg.innerHTML = `
@@ -187,18 +215,23 @@ For the first time..I confess my love for someone..Agar koi galti ho to maaf kr 
       playAudioOnce();
       burstFlyingHearts(15);
       if (btn.dataset.next === "layer-6") runFinalTimeline();
-      if (btn.dataset.next === "layer-7" && feelingsText) typeLine(feelingsText, feelingsMessage, 30);
+      if (btn.dataset.next === "layer-7" && feelingsText)
+        typeLine(feelingsText, feelingsMessage, 30);
     }
 
     if (btn.dataset.prev) showLayer(btn.dataset.prev);
 
     if (btn.id === "loveBtn") {
       loveReply.innerHTML = `
-        <h2 style="color:#ff1493;font-weight:700;">Ahh, Finally... 💞</h2>
-        <img src="assets/hug.gif" alt="hug" style="max-width:200px;border-radius:20px;margin-top:15px;">
-      `;
+    <h2 style="color:#ff1493;font-weight:700;">Ahh, Finally... 💞</h2>
+    <img src="assets/hug.gif" alt="hug" style="max-width:200px;border-radius:20px;margin-top:15px;">
+  `;
       burstFlyingHearts(60);
       burstConfetti(300);
+
+      // Show the See Again button after clicking Love
+      const againBtn2 = document.getElementById("againBtn2");
+      if (againBtn2) againBtn2.style.display = "inline-block";
     }
 
     if (btn.id === "againBtn" || btn.id === "againBtn2") {

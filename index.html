@@ -106,7 +106,7 @@
         </div>
         <div class="controls">
           <button class="btn" data-prev="layer-5">Back</button>
-          <button class="btn primary" id="againBtn">See Again 💖</button>
+          <button class="btn primary" style="display: none;" id="againBtn">See Again 💖</button>
         </div>
       </div>
     </section>
@@ -116,7 +116,7 @@
     <p id="feelingsText" style="white-space: pre-wrap; line-height: 1.6; color:#fff; font-size:1.05rem;"></p>
     <div style="margin-top:25px;">
       <button id="loveBtn">I love you too ❤️</button>
-      <button id="againBtn2">See Again 🔁</button>
+      <button id="againBtn2" style="display:none;">See Again 🔁</button>
     </div>
     <div id="loveReply" style="margin-top:20px;"></div>
   </div>
@@ -129,6 +129,9 @@
   <audio id="bg-audio" preload="auto" loop>
     <source src="assets/mera_hua.mp3" type="audio/mpeg">
   </audio>
+
+  <!-- Mobile Play Button -->
+  <button id="playMusicBtn">Sabse Pahle, Click Me 🎵</button>
 
   <script src="script.js"></script>
 </body>
